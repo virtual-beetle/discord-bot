@@ -3,7 +3,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
-const { debug, wordDicPath, botIds, token } = require('./config/setting');
+const { debug, wordDicPath, token } = require('./config/setting');
 
 // first pass read
 let wordDic = JSON.parse(fs.readFileSync(wordDicPath));
@@ -11,11 +11,11 @@ let wordDic = JSON.parse(fs.readFileSync(wordDicPath));
 if (debug) console.log(wordDic);
 
 // watch for the file
-fs.watch(wordDicPath, (event, filename) => {
+fs.watch(wordDicPath, filename => {
     if (filename) {
         if (debug) console.log(`${filename} has been updated.`);
-        fs.readFile(filename, (err, data) => {
-            if (err) console.error(err);
+        fs.readFile(wordDicPath, (err, data) => {
+            if (err) return console.error(err);
 
             wordDic = JSON.parse(data);
         });
