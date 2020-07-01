@@ -3,6 +3,8 @@
 This is a very tiny project which implements a bot that could interact with users in channel.
 It is based on `discord.js`.
 
+[Here](https://discordpy.readthedocs.io/en/latest/discord.html) is a how-to for setting up a discord bot.
+
 ## Function
 
 Very limited for now.

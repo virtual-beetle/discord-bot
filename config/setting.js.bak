@@ -3,6 +3,7 @@ const wordDicPath = "./config/sample.json";    // path for your word dictionary
 
 const token = 'your tokens'; // token for your bot
 
+// DO NOT EDIT LINES BELOW
 module.exports = {
     debug,
     wordDicPath,
