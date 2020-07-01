@@ -5,8 +5,6 @@ const client = new Discord.Client();
 const fs = require('fs');
 const { debug, wordDicPath, botIds, token } = require('./config/setting');
 
-
-
 // first pass read
 let wordDic = JSON.parse(fs.readFileSync(wordDicPath));
 
@@ -24,8 +22,6 @@ fs.watch(wordDicPath, (event, filename) => {
     }
 });
 
-
-
 // start up log message
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -33,12 +29,12 @@ client.on('ready', () => {
 
 // message processing part
 client.on('message', msg => {
-    let timeout = 900;
-
+    // default timeout
+    let timeout = 1000;
     // if (debug) console.log(msg.author.id);
 
     // if it is a message from a bot, ignore it
-    if (botIds.includes(msg.author.id)) {
+    if (msg.author.bot) {
         return;
     }
 
@@ -46,7 +42,6 @@ client.on('message', msg => {
 });
 
 client.login(token);
-
 
 function respondMessage(msg, wordDic) {
     let msgctn = msg.content.replace("\n", "");
