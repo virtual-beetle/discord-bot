@@ -16,7 +16,7 @@ Very limited for now.
 ## How-To
 
 1. git clone https://github.com/lzhxwmr/discord-bot.git
-2. cd discord_chat_bot
+2. cd discord-bot
 3. npm i
 4. npm i pm2 -g
 5. pm2 start index.js --name discord_bot
