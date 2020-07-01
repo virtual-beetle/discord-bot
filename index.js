@@ -16,8 +16,12 @@ fs.watch(wordDicPath, filename => {
         if (debug) console.log(`${filename} has been updated.`);
         fs.readFile(wordDicPath, (err, data) => {
             if (err) return console.error(err);
-
-            wordDic = JSON.parse(data);
+            try {
+                wordDic = JSON.parse(data);
+                console.log('wordDic successfully updated');
+            } catch (e) {
+                return console.error(e);
+            }
         });
     }
 });
