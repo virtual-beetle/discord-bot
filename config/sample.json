@@ -1,4 +1,4 @@
 {
-    "regex": "response",
-    "(Joel's live)|(Black lives) ": "matter"
+    "<regex>": "<response>",
+    "foo": "bar"
 }

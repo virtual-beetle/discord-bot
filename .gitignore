@@ -1,4 +1,4 @@
-config/dic.json
+config/*.json
 node_modules
 .vscode
 package-lock.json
