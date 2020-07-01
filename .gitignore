@@ -2,3 +2,4 @@ config/dic.json
 node_modules
 .vscode
 package-lock.json
+config/setting.js
