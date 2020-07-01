@@ -15,7 +15,7 @@ Very limited for now.
 
 ## How-To
 
-1. git clone git@github.com:lzhxwmr/discord_chat_bot.git
+1. git clone git@github.com:lzhxwmr/discord-bot.git
 2. cd discord_chat_bot
 3. npm i
 4. npm i pm2 -g
