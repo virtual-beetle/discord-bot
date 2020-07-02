@@ -87,7 +87,7 @@ pm2 save
 
 ## FAQ
 
-**Q: PM2 cannot load**
+**Q: PM2 cannot load(on windows powershell)**
 
 A: Open up powershell(Admin) then input below command and enter:
 ```powershell

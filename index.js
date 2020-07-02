@@ -4,9 +4,13 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const { debug, wordDicPath, token } = require('./config/setting');
+const Interact = require('./src/interact');
 
 // first pass read
 let wordDic = JSON.parse(fs.readFileSync(wordDicPath));
+
+// Initiate the Interact instance
+let inter = new Interact();
 
 if (debug) console.log(wordDic);
 
@@ -33,31 +37,24 @@ client.on('ready', () => {
 
 // message processing part
 client.on('message', msg => {
+    // if it is a message from a bot, ignore it
+    if (msg.author.bot) return console.log("Message from a bot.\nBreak.");
+    
     // default timeout
     let timeout = 1000;
     // if (debug) console.log(msg.author.id);
 
-    // if it is a message from a bot, ignore it
-    if (msg.author.bot) {
-        return;
-    }
+    let execFun;
+    let params;
+    if (msg.content.startsWith('!')) {
+        execFun = inter.commandProcess.bind(inter);
+        params = msg;
+    } else if (inter.replyOnMessage) {
+        execFun = Interact.respondMessage;
+        params = {msg,wordDic};
+    } else return console.log("Reply on message disabled.");
 
-    setTimeout(respondMessage, timeout, msg, wordDic);
+    setTimeout(execFun, timeout, params);
 });
 
 client.login(token);
-
-function respondMessage(msg, wordDic) {
-    let msgctn = msg.content.replace("\n", "");
-
-    for (let keyword in wordDic) {
-        // if (debug) console.log(keyword);
-        let re = new RegExp(keyword, 'i');
-        if (msgctn.match(re)) {
-            msg.channel.send(wordDic[keyword]);
-            break;
-        }
-    }
-
-    return;
-}
