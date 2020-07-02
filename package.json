@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "lzhxwmr",
-  "repository": {"github": "https://github.com/lzhxwmr/discord-bot"},
+  "repository": {"url": "https://github.com/lzhxwmr/discord-bot"},
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.2.0"
