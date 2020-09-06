@@ -10,6 +10,7 @@ It is based on `discord.js`.
 Very limited for now.
 * Dynamically load your customized dictionary
 * Use regex to match words from the chat (in channel)
+* Currency convertor
 
 ## Prequisity
 
