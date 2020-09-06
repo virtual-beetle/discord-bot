@@ -46,7 +46,7 @@ client.on('message', msg => {
 
     let execFun;
     let params;
-    if (msg.content.startsWith('!')) {
+    if (msg.content.startsWith('!') || msg.content.startsWith('！')) {
         execFun = inter.commandProcess.bind(inter);
         params = msg;
     } else if (inter.replyOnMessage) {
