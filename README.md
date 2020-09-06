@@ -36,6 +36,7 @@ It should also be renamed to `setting.js`
 ```javascript
 const debug = false;        // whether to open console log debug
 const wordDicPath = "./config/sample.json";    // path for your word dictionary
+const OPEN_CURRENCY_CONVENTOR_API_KEY = ''  // token for the currency conventor(see on https://free.currencyconverterapi.com/)
 
 const token = 'your tokens'; // token for your bot
 
@@ -56,6 +57,9 @@ The bot would reply in channel with the response if any regex is matched.
 All the entries are traversed in order such that upper entries get higher priority.
 
 And in one message only one of the regex would be matched, thus only one response would be made.
+
+If you want to use the feature of currency convertor, you should first register and verify your email address on currencyconverter.com an fill your api key into `OPEN_CURRENCY_CONVENTOR_API_KEY`. \
+What is more is this feature supports only three destinated currencies for now and the number of them is hardcoded. They are now CNY, USD and ARS. If you want to modify their types, you should modify the source code in `src/interact.js`.
 
 **Tip: Remember to esacape those special characters.**
 
