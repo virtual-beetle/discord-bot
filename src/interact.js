@@ -107,7 +107,7 @@ class Interact {
             else if (command.match(/^(ccusage)/i)) {
                 let response = await axios.get("https://free.currconv.com/others/usage?apiKey="+OPEN_CURRENCY_CONVENTOR_API_KEY);
                 // console.log(response.data);
-                msg.channel.send(`Now it is \`${response.data.usage}/1000\` this month.`);
+                msg.channel.send(`Now it is \`${response.data.usage}/1000\` this hour.`);
 
                 return;
             }
