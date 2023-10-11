@@ -1,7 +1,7 @@
 'use strict';
 
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
 const fs = require('fs');
 const { debug, wordDicPath, token } = require('./config/setting');
 const Interact = require('./src/interact');
