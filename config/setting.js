@@ -4,6 +4,12 @@ const OPEN_CURRENCY_CONVENTOR_API_KEY = ''  // token for the currency conventor(
 
 const token = 'your tokens'; // token for your bot
 
+const regexResponses = {
+    'hello|hi|hey': 'Hello there!',
+    'goodbye|bye': 'Goodbye!',
+    // Add more patterns and responses as needed
+};
+
 // DO NOT EDIT LINES BELOW
 module.exports = {
     debug,
