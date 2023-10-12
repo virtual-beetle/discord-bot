@@ -108,9 +108,3 @@ client.on('message', msg => {
 // You can use discordToken for logging in
 client.login(discordToken);
 });
-
-
-
-
-// You can use discordToken for logging in
-client.login(discordToken);
