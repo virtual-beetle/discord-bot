@@ -71,6 +71,8 @@ client.on('message', msg => {
     // Regular expression to match "wide" in any capitalization
     const wideRegex = /wide/i; // The 'i' flag makes it case-insensitive
 
+    console.log(`Received message: ${msg.content}`);
+
     // Check if the message content matches the regular expression
     if (wideRegex.test(msg.content)) {
         // Respond with "Mr. WorldWide"
