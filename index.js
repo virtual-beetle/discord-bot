@@ -64,18 +64,16 @@ client.on('ready', () => {
 
 // message processing part
 client.on('message', msg => {
-    // Ignore messages from bots to avoid responding to other bots
     if (msg.author.bot) return;
 
-    // Convert the message content to lowercase for case-insensitive matching
     const content = msg.content.toLowerCase();
 
-    // Check if the message contains the word "wide" (in any capitalization)
     if (content.includes('wide')) {
-        // Respond with "Mr. WorldWide"
+        console.log('Detected "wide" in message:', msg.content);
         msg.channel.send('Mr. WorldWide');
     }
 });
+
 
 
 // You can use discordToken for logging in
