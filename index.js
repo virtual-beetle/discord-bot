@@ -60,6 +60,7 @@ fs.watch(wordDicPath, filename => {
 // start up log message
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    client.channels.cache.clear();
 });
 
 // message processing part
