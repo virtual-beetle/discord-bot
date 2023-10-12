@@ -1,23 +1,37 @@
-'use strict';
+    'use strict';
 
 require('dotenv').config();
 const discordToken = process.env.DISCORD_TOKEN;
 
-
-
-const Discord = require('discord.js');
 const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ 
+const client = new Client({
     intents: [
-        GatewayIntentBits.Guilds, // Required for server and member-related events
-        GatewayIntentBits.GuildMessages, // Required for message events
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
         // Add other intents as needed
-    ] 
+    ]
 });
 
-const fs = require('fs');
-const { debug, wordDicPath, token } = require('./config/setting');
 const Interact = require('./src/interact');
+
+// Comment out the following line as you don't need 'token' anymore
+// const { debug, wordDicPath, token } = require('./config/setting');
+
+// START OF JSON ADDITION 
+
+const fs = require('fs');
+const config = JSON.parse(fs.readFileSync('./config/setting.json'));
+
+// Access values from the config object
+const debug = config.debug;
+const wordDicPath = config.wordDicPath;
+const token = config.token;
+const regexResponses = config.regexResponses;
+
+// Now you can use these variables in your code
+
+
+//END OF JSON ADDITION 
 
 // first pass read
 let wordDic = JSON.parse(fs.readFileSync(wordDicPath));
@@ -50,24 +64,19 @@ client.on('ready', () => {
 
 // message processing part
 client.on('message', msg => {
-    // if it is a message from a bot, ignore it
-    if (msg.author.bot) return console.log("Message from a bot.\nBreak.");
-    
-    // default timeout
-    let timeout = 1000;
-    // if (debug) console.log(msg.author.id);
+    // Ignore messages from bots to avoid responding to other bots
+    if (msg.author.bot) return;
 
-    let execFun;
-    let params;
-    if (msg.content.startsWith('!') || msg.content.startsWith('！')) {
-        execFun = inter.commandProcess.bind(inter);
-        params = msg;
-    } else if (inter.replyOnMessage) {
-        execFun = Interact.respondMessage;
-        params = {msg,wordDic};
-    } else return console.log("Reply on message disabled.");
+    // Convert the message content to lowercase for case-insensitive matching
+    const content = msg.content.toLowerCase();
 
-    setTimeout(execFun, timeout, params);
+    // Check if the message contains the word "wide" (in any capitalization)
+    if (content.includes('wide')) {
+        // Respond with "Mr. WorldWide"
+        msg.channel.send('Mr. WorldWide');
+    }
 });
 
-client.login(token);
+
+// You can use discordToken for logging in
+client.login(discordToken);
