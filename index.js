@@ -1,5 +1,8 @@
 'use strict';
 
+require('dotenv').config();
+const discordToken = process.env.DISCORD_TOKEN;
+
 
 
 const Discord = require('discord.js');
