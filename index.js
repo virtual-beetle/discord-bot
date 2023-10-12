@@ -78,6 +78,35 @@ client.on('message', msg => {
         // Respond with "Mr. WorldWide"
         msg.channel.send('Mr. WorldWide');
     }
+
+    // error handling part
+client.on('error', error => {
+    console.error('Discord API error:', error);
+});
+
+// message processing part
+client.on('message', msg => {
+    // Ignore messages from bots to avoid responding to other bots
+    if (msg.author.bot) return;
+
+    // Regular expression to match "wide" in any capitalization
+    const wideRegex = /wide/i; // The 'i' flag makes it case-insensitive
+
+    // Log the received message to the console
+    console.log(`Received message: ${msg.content}`);
+
+    // Check if the message content matches the regular expression
+    if (wideRegex.test(msg.content)) {
+        // Respond with "Mr. WorldWide"
+        msg.channel.send('Mr. WorldWide')
+            .catch(error => {
+                console.error('Error sending message:', error);
+            });
+    }
+});
+
+// You can use discordToken for logging in
+client.login(discordToken);
 });
 
 
