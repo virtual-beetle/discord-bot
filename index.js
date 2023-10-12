@@ -21,7 +21,7 @@ const Interact = require('./src/interact');
 // START OF JSON ADDITION
 
 const fs = require('fs');
-const config = require('./config/settings.js'); // Use the correct path to your settings.js file
+const config = require('settings.js'); // Use the correct path to your settings.js file
 
 
 // Access values from the config object
