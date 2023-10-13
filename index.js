@@ -34,6 +34,12 @@ const regexResponses = config.regexResponses;
 
 // END OF JSON ADDITION
 
+client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}`);
+    // You can add other initialization tasks here if needed.
+});
+
+
 // Log the received message to the console
 client.on('message', msg => {
     // Ignore messages from bots to avoid responding to other bots
