@@ -48,33 +48,18 @@ client.on('message', msg => {
 
     console.log(`Received message: ${msg.content}`);
 
-//start first attempt
-
     // Regular expression to match "wide" in any capitalization
     //const wideRegex = /wide/i; // The 'i' flag makes it case-insensitive
 
-//    if (wideRegex.test(msg.content)) {
-//        console.log('Message contains "wide".');
+    if (wideRegex.test(msg.content)) {
+        console.log('Message contains "wide".');
         // Respond with "Mr. WorldWide"
-//        msg.channel.send("Mr. WorldWide")
-//            .catch(error => {
-//                console.error('Error sending message:', error);
-//            });
-//    }
-//});
-
-//start second attempt
-
-if (wideRegex.test(msg.content)) {
-    console.log('Message contains "wide".');
-    // Respond with "Mr. WorldWide"
-    msg.channel.send('Mr. WorldWide')
-        .catch(error => {
-            console.error('Error sending message:', error);
-        });
-}
-
-//start third attempt
+        msg.channel.send("Mr. WorldWide")
+            .catch(error => {
+                console.error('Error sending message:', error);
+            });
+    }
+});
 
 //if (msg.content.includes("wide")) {
 //    console.log('Message contains "wide".');
@@ -96,4 +81,4 @@ client.login(discordToken)
     .catch(error => {
         console.error('Error logging in:', error);
     });
-});
+
