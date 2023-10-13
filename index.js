@@ -67,4 +67,8 @@ client.on('error', error => {
 });
 
 // Log in using the discordToken
-client.login(discordToken);
+client.login(discordToken)
+    .catch(error => {
+        console.error('Error logging in:', error);
+    });
+
