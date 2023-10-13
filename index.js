@@ -81,4 +81,4 @@ client.login(discordToken)
     .catch(error => {
         console.error('Error logging in:', error);
     });
-
+});
