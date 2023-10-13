@@ -61,6 +61,15 @@ client.on('message', msg => {
     }
 });
 
+if (msg.content.includes("wide")) {
+    console.log('Message contains "wide".');
+    msg.channel.send('Mr. WorldWide')
+        .catch(error => {
+            console.error('Error sending message:', error);
+        });
+}
+//a different try?
+
 
 // Handle Discord API errors
 client.on('error', error => {
